@@ -1,0 +1,32 @@
+{% extends "report/base.html" %} {% load crispy_forms_tags %} {% block content%}
+<div class="card mb-4 mt-4">
+  <div class="card-header card-bg-blue">Create Project</div>
+  <div class="card-body">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Create Project Report</legend>
+        {{ form | crispy }}
+      </fieldset>
+      <br />
+
+      <div class="d-grid gap-2 d-md-block">
+        <input
+          class="btn btn-dark"
+          type="submit"
+          name="save_quit"
+          value="Save and Quit"
+        />
+
+        <input
+          class="btn btn-dark"
+          type="submit"
+          name="save_add"
+          value="Save and Add Project Day"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

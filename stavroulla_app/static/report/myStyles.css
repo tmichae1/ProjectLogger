@@ -1,0 +1,30 @@
+.selected {
+  background-color: #d7f6fc;
+}
+
+.card-bg-blue {
+  background-color: #212529;
+  color: #ffffff;
+}
+
+.hide_column {
+  display: none;
+}
+
+.btn-dark {
+  background: #212529 !important;
+  color: white !important;
+}
+.btn-dark:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.costs {
+  display: flex;
+  flex-direction: column;
+}
+
+.cost-num {
+  margin-top: 10px;
+}

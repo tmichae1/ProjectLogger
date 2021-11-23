@@ -1,0 +1,40 @@
+{% extends "report/base.html" %} {% load crispy_forms_tags %} {% block content%}
+<div class="card mb-4 mt-4">
+  <div class="card-header card-bg-blue">Add Machine</div>
+  <div class="card-body">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Add Machine</legend>
+        {{ form | crispy }}
+      </fieldset>
+      <br />
+
+      <div class="d-grid gap-2 d-md-block">
+        <input
+          class="btn btn-dark"
+          type="submit"
+          name="save_quit"
+          value="Save and Quit"
+        />
+
+        <input
+          class="btn btn-dark"
+          type="submit"
+          name="save_add"
+          value="Save and Add Another"
+        />
+      </div>
+      <br />
+      <br />
+      <h5>Added Machines</h5>
+      <ul>
+        {% for machine in machines%}
+        <li>{{machine.name}}</li>
+        {% endfor %}
+      </ul>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

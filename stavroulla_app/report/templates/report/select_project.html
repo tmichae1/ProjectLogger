@@ -1,0 +1,50 @@
+{% extends "report/base.html" %} {% load static %} {% block content %}
+<h1 class="mt-4">Select Project</h1>
+<div class="card mb-4">
+  <div class="card-header card-bg-blue">
+    <i class="fas fa-scroll me-1"></i>
+    Projects
+  </div>
+  <div class="card-body">
+    <table id="projectTableSelect" class="table table-bordered" width="100%">
+      <thead>
+        <tr>
+          <th>Created</th>
+          <th>Project Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Project Status</th>
+          <th>Project ID</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for project in projects %}
+        <tr>
+          <td>{{project.created}}</td>
+          <td>{{project.name}}</td>
+          {% if project.start_date %}
+          <td>{{project.start_date}}</td>
+          {% else %}
+          <td>no start date</td>
+          {% endif %} {% if project.end_date %}
+          <td>{{project.end_date}}</td>
+          {% else %}
+          <td>no end date</td>
+          {% endif %} {% if project.completed %}
+          <td>Complete</td>
+          {% else %}
+          <td>Incomplete</td>
+          {% endif %}
+          <td id="projectId">{{project.project_id}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<button class="btn btn-dark" disabled id="nextBtn">Next</button>
+
+<script src="{% static 'js/selectProjectTables.js' %}"></script>
+
+{% endblock content %}

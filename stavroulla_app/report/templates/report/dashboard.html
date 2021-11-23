@@ -1,0 +1,140 @@
+{% extends "report/base.html" %} {% load static %} {% block content %}
+<h1 class="mt-4">Dashboard</h1>
+<div id="totalCost" class="cost-num"></div>
+<div class="card mb-4">
+  <div class="card-header card-bg-blue">
+    <i class="fas fa-scroll me-1"></i>
+    Projects
+  </div>
+  <div class="card-body">
+    <table id="projectTable" class="table table-bordered" width="100%">
+      <thead>
+        <tr>
+          <th>Created</th>
+          <th>Project Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Project Status</th>
+          <th>Project ID</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for project in projects %}
+        <tr>
+          <td>{{project.created}}</td>
+          <td>{{project.name}}</td>
+          {% if project.start_date %}
+          <td>{{project.start_date}}</td>
+          {% else %}
+          <td>no start date</td>
+          {% endif %} {% if project.end_date %}
+          <td>{{project.end_date}}</td>
+          {% else %}
+          <td>no end date</td>
+          {% endif %} {% if project.completed %}
+          <td>Complete</td>
+          {% else %}
+          <td>Incomplete</td>
+          {% endif %}
+          <td id="projectId">{{project.project_id}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<br />
+<div id="dailyCost" class="cost-num"></div>
+<div class="row">
+  <div class="col-xl-4">
+    <div class="card mb-4">
+      <div class="card-header card-bg-blue">
+        <i class="fas fa-calendar-day me-1"></i>
+        Project Days
+      </div>
+      <div class="card-body">
+        <table id="projectDayTable" class="table table-bordered" width="100%">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Day id</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-8">
+    <div class="card mb-4">
+      <div class="card-header card-bg-blue">
+        <i class="fas fa-users me-1"></i>
+        Employees <span id="employeeCost"></span>
+      </div>
+      <div class="card-body">
+        <table id="employeeTable" class="table table-bordered" width="100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+
+<div class="row">
+  <div class="col-xl-4">
+    <div class="card mb-4">
+      <div class="card-header card-bg-blue">
+        <i class="fas fa-hammer me-1"></i>
+        Materials and sundries <span id="matSunCost"></span>
+      </div>
+      <div class="card-body">
+        <table
+          id="MaterialsAndSundriesTable"
+          class="table table-bordered"
+          width="100%"
+        >
+          <thead>
+            <tr>
+              <th>Materials cost</th>
+              <th>Sundries cost</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-8">
+    <div class="card mb-4">
+      <div class="card-header card-bg-blue">
+        <i class="fas fa-tractor me-1"></i>
+        Machines Used <span id="machineCost"></span>
+      </div>
+      <div class="card-body">
+        <table id="machineTable" class="table table-bordered" width="100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/tables.js' %}"></script>
+{% endblock content %}

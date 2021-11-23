@@ -1,0 +1,11 @@
+{% extends "report/base.html" %} {% load static %} {% block content%}
+<h3 class="mt-4" id="topInfo">Project: {{project_name}}</h3>
+<div class="card mb-4">
+  <div class="card-header card-bg-blue" id="cardHeader"></div>
+  <div class="card-body">
+    <form target="_blank" id="projectForm"></form>
+  </div>
+</div>
+
+<script src="{% static 'js/editProjectDay.js' %}"></script>
+{% endblock content%}
